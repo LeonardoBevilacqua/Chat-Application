@@ -22,9 +22,9 @@
 			$blocks = explode(',', $onlines['blocks']);
 			if (!in_array($userOnline, $blocks)) {
 				if ($agora >= $onlines['limite']) {
-					$usersOn[] = array('id' => $onlines['id'], 'nome' => utf8_encode($onlines['nome']), 'foto' => $foto, 'status' => 'off');
+					$usersOn[] = array('id' => $onlines['id'], 'nome' => $onlines['nome'], 'foto' => $foto, 'status' => 'off');
 				}else{
-					$usersOn[] = array('id' => $onlines['id'], 'nome' => utf8_encode($onlines['nome']), 'foto' => $foto, 'status' => 'on');
+					$usersOn[] = array('id' => $onlines['id'], 'nome' => $onlines['nome'], 'foto' => $foto, 'status' => 'on');
 				}
 			}
 		}
@@ -96,7 +96,7 @@
 				$msg = str_replace($emotions, $imgs, $row['mensagem']);
 				$novasMensagens[] = array(
 					'id' => $row['id'],
-					'mensagem' => utf8_encode($msg),
+					'mensagem' => $msg,
 					'fotoUser' => $fotoUser,
 					'id_de' => $row['id_de'],
 					'id_para' => $row['id_para'],

@@ -38,7 +38,7 @@
 			$msg = str_replace($emotions, $imgs, $row['mensagem']);
 			$mensagens[] = array(
 				'id' => $row['id'],
-				'mensagem' => utf8_encode($msg),
+				'mensagem' => $msg,
 				'fotoUser' => $fotoUser,
 				'id_de' => $row['id_de'],
 				'id_para' => $row['id_para'],
