@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body>
+	<ul id="foo">
+		<li id="teste"><p>First</p></li>
+		<li>Second</li>
+		<li>Third</li>
+	</ul>
+	<script>
+		var ul = document.getElementById("foo");
+		var items = ul.getElementsByTagClass("eu");
+		
+		console.log(items);
+
+		for (var i = 0; i < items.length; ++i) {
+		  	console.log(items[i].textContent);
+		}
+	</script>
+</body>
+</html>

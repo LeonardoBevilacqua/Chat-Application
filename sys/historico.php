@@ -8,7 +8,7 @@
 		$id_conversa = (int)$_POST['conversacom'];
 		$online = (int)$_POST['online'];
 
-		$pegaConversas = BD::conn()->prepare("SELECT * FROM mensagens WHERE (id_de = ? AND id_para = ?) OR (id_de = ? AND id_para = ?) ORDER BY id ASC LIMIT 10");
+		$pegaConversas = BD::conn()->prepare("SELECT * FROM mensagens WHERE (id_de = ? AND id_para = ?) OR (id_de = ? AND id_para = ?) ORDER BY id DESC LIMIT 10");
 		$pegaConversas->execute(array($online, $id_conversa, $id_conversa, $online));
 		
 		$emotions = array(':)', ':@','8)', ':D', ':3', ':(', ';)');

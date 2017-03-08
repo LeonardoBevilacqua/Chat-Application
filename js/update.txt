@@ -1,0 +1,42 @@
+if (!in_array(msg.janela_de, clicou)) {
+								if (jQuery('.mensagens ul li#' + msg.id).length == 0 && msg.janela_de > 0) {
+									if (userOnline == msg.id_de) {
+										if (msg.lido == 1) {
+											jQuery('#janela_' + msg.janela_de + ' .mensagens ul').append('<li id="' + msg.id + '" class="eu"><p data-lido="' + msg.lido + '">' + msg.mensagem + '<br><span>Visto</span></p></li>');	
+										}else{
+											jQuery('#janela_' + msg.janela_de + ' .mensagens ul').append('<li id="' + msg.id + '" class="eu"><p data-lido="' + msg.lido + '">' + msg.mensagem + '</p></li>');								
+										}
+									}else{
+										jQuery('#janela_' + msg.janela_de + ' .mensagens ul').append('<li id="' + msg.id + '"><div class="imgSmall"><img src="fotos/' + msg.fotoUser + '" /></div><p data-lido="' + msg.lido + '">' + msg.mensagem + '</p></li>');
+									}
+								}
+							}
+
+
+function retorna_historico(id_conversa, scroll){
+		scroll = scroll || 0;
+		jQuery.ajax({
+			type: 'POST',
+			url: 'sys/historico.php',
+			data: {conversacom: id_conversa, online: userOnline},
+			dataType: 'json',
+			success: function(retorno){
+				jQuery.each(retorno, function(i, msg){
+					if(jQuery('#janela_' + msg.janela_de).length > 0){
+						if(userOnline == msg.id_de){
+							jQuery('#janela_' + msg.janela_de + ' .mensagens ul').append('<li id="' + msg.id + '" class="eu"><p data-lido="' + msg.lido + '">' + msg.mensagem + '</p></li>');															
+						}else{
+							jQuery('#janela_' + msg.janela_de + ' .mensagens ul').append('<li id="' + msg.id + '"><div class="imgSmall"><img src="fotos/' + msg.fotoUser + '" /></div><p data-lido="' + msg.lido + '">' + msg.mensagem + '</p></li>');
+						}
+					}
+				});
+				//[].reverse.call(jQuery('#janela_' + id_conversa + ' .mensagens li')).appendTo(jQuery('#janela_' + id_conversa + ' .mensagens ul'));
+				teste();alert(scroll);
+				if (scroll == 1) {
+					jQuery('#janela_' + id_conversa + ' .mensagens').scrollTop(250);	
+				}else{
+					jQuery('#janela_' + id_conversa + ' .mensagens').scrollTop(scroll);	
+				}			
+			}
+		});
+	}
