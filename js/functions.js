@@ -103,8 +103,8 @@ jQuery(function(){
 						}
 					}
 				});
-				lidos();
 				[].reverse.call(jQuery('#janela_' + id_conversa + ' .mensagens li')).appendTo(jQuery('#janela_' + id_conversa + ' .mensagens ul'));
+				lidos();
 				
 				jQuery('#janela_' + id_conversa + ' .mensagens').scrollTop(250);		
 			}
@@ -226,8 +226,9 @@ jQuery(function(){
 							}
 
 							if (!in_array(msg.janela_de, clicou)) {
-								jQuery("li#lido").remove();
+								
 								if (jQuery('.mensagens ul li#' + msg.id).length == 0 && msg.janela_de > 0) {
+									jQuery("ul#con_"+msg.janela_de+" li#lido").remove();
 									if(userOnline == msg.id_de){
 										jQuery('#janela_'+msg.janela_de+' .mensagens ul').append('<li class="eu" id="'+msg.id+'"><p>'+msg.mensagem+'</p></li>');
 									}else{
