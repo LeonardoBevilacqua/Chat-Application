@@ -239,7 +239,7 @@ jQuery(function(){
 						jQuery('.mensagens').animate({scrollTop: 250}, '500');
 						//console.log(clicou);
 					}else if(retorno.status == 'vazio'){
-						lidos();
+						//lidos();
 					}
 					clicou = [];
 
@@ -266,5 +266,12 @@ jQuery(function(){
 		});
 	}
 
+	function msgLidos(){
+		setInterval(function(){
+			lidos();
+		},3000);
+	}
+
+	msgLidos();
 	verifica(0,0,userOnline);
 });
